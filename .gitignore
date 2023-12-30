@@ -1,0 +1,5 @@
+gorm.db
+
+go.mod:
+    go mod init github.com/username/repo
+    go mod tidy

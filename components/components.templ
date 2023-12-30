@@ -1,0 +1,21 @@
+package components
+
+var greeting = "good"
+
+templ base() {
+	<html>
+		<head>
+			<title>Shortit</title>
+			<link rel="stylesheet" href="./dist/output.css" />
+		</head>
+		<body>
+			{ children... }
+		</body>
+	</html>
+}
+
+templ DashboardHmoe(name string) {
+	@base() {
+		<div class="text-3xl font-bold underline">Hello { name }</div>
+	}
+}

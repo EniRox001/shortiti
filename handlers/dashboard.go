@@ -7,7 +7,6 @@ import (
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	component := components.DashboardHmoe("starter tem")
+	component := components.DashboardHmoe("starter template")
 	component.Render(r.Context(), w)
-
 }

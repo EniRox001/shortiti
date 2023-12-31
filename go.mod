@@ -2,12 +2,12 @@ module github.com/enirox001/shortit
 
 go 1.20
 
-require gorm.io/gorm v1.25.5
-
 require (
-	github.com/a-h/templ v0.2.501 // indirect
-	github.com/mattn/go-sqlite3 v1.14.17 // indirect
+	github.com/a-h/templ v0.2.501
+	gorm.io/gorm v1.25.5
 )
+
+require github.com/mattn/go-sqlite3 v1.14.17 // indirect
 
 require (
 	github.com/gorilla/mux v1.8.1

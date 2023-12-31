@@ -1,5 +1,7 @@
 gorm.db
 
 go.mod:
-    go mod init github.com/username/repo
+   po
     go mod tidy
+
+/node_modules

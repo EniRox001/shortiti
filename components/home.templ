@@ -1,0 +1,76 @@
+package components
+
+var greeting = "good"
+
+templ base() {
+	<html>
+		<head>
+			<title>Shortit</title>
+			<link rel="stylesheet" href="./dist/output.css" />
+			 <script src="https://cdn.tailwindcss.com"></script>
+		</head>
+		<body class="bg-slate-100">
+			{ children... }
+		</body>
+	</html>
+}
+
+templ header() {
+	<header class="bg-slate-200 shadow-lg">
+		<nav class="flex flex-row justify-between px-24 py-8">
+			<h3 class="text-lg font-bold text-orange-800">{"Shortit"}</h3>
+			<ul class="flex flex-row gap-24 justify-center">
+				<li class="hover:text-orange-800 hover:scale-110 duration-300"><a href="/login">{"Login"}</a></li>
+				<li class="hover:text-orange-800 hover:scale-110 duration-300"><a href="/register">{"Register"}</a></li>
+			</ul>
+		</nav>
+	</header>
+}
+
+templ body() {
+	<div class="mt-20 flex flex-col text-center gap-5 ">
+		<h1 class="text-6xl font-bold">Link Brilliance, <span class="hover:text-orange-500 hover:scale-110 hover:rotate-45 duration-300 text-orange-800">Simplified!</span></h1>
+		<div class="flex flex-row text-center justify-center">
+			<p class="text-xl self-center text-center">{"Elevate your links with ShortInk - where brevity meets brilliance! The quickest way to shorten, share, and shine online."}</p>
+		</div>
+	</div>
+}
+
+templ linkBox() {
+	<div class="flex flex-row mt-20 mx-24">
+		<textarea class="w-full rounded-l-lg border-2 border-gray-300 focus:border-orange-500 focus:outline-none px-4 py-2" placeholder="Paste your link here..."></textarea>
+		<button class="bg-orange-800 text-white font-bold px-12 rounded-r-lg hover:bg-orange-500 duration-300">{"Shorten"}</button>
+	</div>
+}
+
+templ info() {
+	<div class="flex flex-row mt-20 px-24 w-full gap-6">
+		<div class="flex flex-col gap-2 w-3/6 p-12 rounded-lg hover:shadow-lg hover:bg-slate-200 hover:text-orange-500 hover:scale-105 duration-300">
+			<h6 class="text-lg font-bold">{"ShortInk: Streamline Your Links, Maximize Impact."}</h6>
+			<p class="text-xl">{"Shorten, share, track. Elevate your online presence with ShortInk's sleek and powerful URL shortening. Simplify the way you communicate and make every link count. Sign up now for link brilliance!"}</p>
+		</div>
+		<div class="w-3/6 grid grid-cols-2 gap-4 flex flex-col gap-2 w-3/6 rounded-lg hover:shadow-lg hover:bg-slate-200 p-12 hover:text-orange-500 hover:scale-105 duration-300">
+			<div class="flex flex-row gap-4">
+				<svg class="hover:text-orange-500 hover:scale-105 duration-300" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>
+				<p>{"ShortInk Magic: Elevate with Brevity!"}</p>
+			</div>
+			<div class="flex flex-row gap-4">
+				<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-280h80v-200h-80v200Zm320 0h80v-400h-80v400Zm-160 0h80v-120h-80v120Zm0-200h80v-80h-80v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+				<p>{"Analytic Alchemy: Unveil the Secrets Behind Your Links!"}</p>
+			</div>
+			<div class="flex flex-row gap-4">
+				<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-360q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm280 80q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm280 80q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+				<p>{"Bulk Blinking Brilliance: Create Links at Warp Speed!"}</p>
+			</div>
+		</div>
+	</div>
+}
+
+templ DashboardHmoe(name string) {
+	@base() {
+		@header()
+		@body()
+		@linkBox()
+		@info()
+	}
+}

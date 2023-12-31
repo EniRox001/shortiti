@@ -7,9 +7,17 @@ templ base() {
 		<head>
 			<title>Shortit</title>
 			<link rel="stylesheet" href="./dist/output.css" />
-			 <script src="https://cdn.tailwindcss.com"></script>
+			<script src="https://cdn.tailwindcss.com"></script>
+			<link rel="preconnect" href="https://fonts.googleapis.com"/>
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"/>
 		</head>
-		<body class="bg-slate-100">
+		// <style type="text/css">
+		// 	::placeholder {
+		// 		transform: translateY(10px);
+		// 	}
+		// </style>
+		<body class="bg-slate-100" style="font-family: 'Raleway', sans-serif;">
 			{ children... }
 		</body>
 	</html>
@@ -29,7 +37,7 @@ templ header() {
 
 templ body() {
 	<div class="mt-20 flex flex-col text-center gap-5 ">
-		<h1 class="text-6xl font-bold">Link Brilliance, <span class="hover:text-orange-500 hover:scale-110 hover:rotate-45 duration-300 text-orange-800">Simplified!</span></h1>
+		<h1 class="text-6xl font-bold">{"Link Brilliance, "}<span class="hover:text-orange-500 hover:scale-110 hover:rotate-45 duration-300 text-orange-800">{"Simplified!"}</span></h1>
 		<div class="flex flex-row text-center justify-center">
 			<p class="text-xl self-center text-center">{"Elevate your links with ShortInk - where brevity meets brilliance! The quickest way to shorten, share, and shine online."}</p>
 		</div>
@@ -38,7 +46,7 @@ templ body() {
 
 templ linkBox() {
 	<div class="flex flex-row mt-20 mx-24">
-		<textarea class="w-full rounded-l-lg border-2 border-gray-300 focus:border-orange-500 focus:outline-none px-4 py-2" placeholder="Paste your link here..."></textarea>
+		<input class="w-full rounded-l-lg border-2 border-gray-300 focus:border-orange-500 focus:outline-none px-4 py-6 align-middle" placeholder="Paste your link here..."></input>
 		<button class="bg-orange-800 text-white font-bold px-12 rounded-r-lg hover:bg-orange-500 duration-300">{"Shorten"}</button>
 	</div>
 }

@@ -11,6 +11,7 @@ func New() http.Handler {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/", handlers.Home).Methods("GET")
+	router.HandleFunc("/login", handlers.Login).Methods("GET")
 
 	return router
 }

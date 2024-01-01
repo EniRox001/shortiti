@@ -11,7 +11,14 @@ func New() http.Handler {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/", handlers.Home).Methods("GET")
+	router.HandleFunc("/", handlers.Shorten).Methods("POST")
 	router.HandleFunc("/login", handlers.Login).Methods("GET")
+
+	// public routes
+	router.HandleFunc("/public/links/{url}", handlers.LinkDashboard).Methods("GET")
+
+	router.HandleFunc("/{urlId}", handlers.Redirect).Methods("GET")
+	router.HandleFunc("{urlRoute}", handlers.Redirect).Methods("GET")
 
 	return router
 }

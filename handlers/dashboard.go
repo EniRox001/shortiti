@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/enirox001/shortit/components"
@@ -42,8 +41,8 @@ func Shorten(w http.ResponseWriter, r *http.Request) {
 	// http.Redirect(w, r, "/public/links/"+uniqueId, http.StatusFound)
 }
 
-func LinkDashboard(w http.ResponseWriter, r *http.Request) {
-	urlId := mux.Vars(r)["url"]
+func ShowQRCode(w http.ResponseWriter, r *http.Request) {
+	urlId := mux.Vars(r)["urlId"]
 
 	url := data.FindByUniqueId(urlId)
 
@@ -52,15 +51,13 @@ func LinkDashboard(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	component := components.LinkDashboard(*url)
+	component := components.DashboardQRCode(*url)
 	component.Render(r.Context(), w)
+
 }
 
 func Redirect(w http.ResponseWriter, r *http.Request) {
 	urlId := mux.Vars(r)["urlId"]
-
-	fmt.Println("urlId")
-	fmt.Println(urlId)
 
 	url := data.FindByUniqueId(urlId)
 
@@ -73,4 +70,33 @@ func Redirect(w http.ResponseWriter, r *http.Request) {
 	url.UpdateClicks()
 
 	// util.Redirect(url.FullLink)
+}
+
+func DeletePublicLink(w http.ResponseWriter, r *http.Request) {
+	urlId := mux.Vars(r)["urlId"]
+
+	url := data.FindByUniqueId(urlId)
+
+	if url.ID == 0 {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	url.Delete()
+
+	http.Redirect(w, r, "/", http.StatusFound)
+}
+
+func LinkDashboard(w http.ResponseWriter, r *http.Request) {
+	urlId := mux.Vars(r)["url"]
+
+	url := data.FindByUniqueId(urlId)
+
+	if url.ID == 0 {
+		http.Redirect(w, r, "/", http.StatusFound)
+		return
+	}
+
+	component := components.LinkDashboard(*url)
+	component.Render(r.Context(), w)
 }

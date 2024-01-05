@@ -2,6 +2,17 @@ package components
 
 import "github.com/enirox001/shortit/data"
 
+script copyText(text string) {
+	var copyText = document.getElementById(text);
+
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+
+	navigator.clipboard.writeText(copyText.value);
+
+	alert("Copied the text: " + copyText.value);
+}
+
 templ base() {
 	<html>
 		<head>
@@ -27,6 +38,9 @@ templ header() {
 	<header class="bg-slate-200 shadow-lg">
 		<nav class="flex flex-row justify-between px-24 py-8">
 			<h3 class="text-lg font-bold text-orange-800">{"Shortit"}</h3>
+			<!-- This code is for when we have a user system -->
+
+			<!-- TODO: Implement user system -->
 			<ul class="flex flex-row gap-24 justify-center">
 				<li class="hover:text-orange-800 hover:scale-110 duration-300"><a href="/login">{"Login"}</a></li>
 				<li class="hover:text-orange-800 hover:scale-110 duration-300"><a href="/register">{"Register"}</a></li>
@@ -59,70 +73,20 @@ templ info() {
 		</div>
 		<div class="w-3/6 grid grid-cols-2 gap-4 flex flex-col gap-2 w-3/6 rounded-lg hover:shadow-lg hover:bg-slate-200 p-12 hover:text-orange-500 hover:scale-105 duration-300">
 			<div class="flex flex-row gap-4">
-				<svg class="hover:text-orange-500 hover:scale-105 duration-300" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>
+				<svg class="hover:fill-orange-800 duration-300" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>
 				<p>{"ShortInk Magic: Elevate with Brevity!"}</p>
 			</div>
 			<div class="flex flex-row gap-4">
-				<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-280h80v-200h-80v200Zm320 0h80v-400h-80v400Zm-160 0h80v-120h-80v120Zm0-200h80v-80h-80v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+				<svg class="hover:fill-orange-800 duration-300" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-280h80v-200h-80v200Zm320 0h80v-400h-80v400Zm-160 0h80v-120h-80v120Zm0-200h80v-80h-80v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
 				<p>{"Analytic Alchemy: Unveil the Secrets Behind Your Links!"}</p>
 			</div>
 			<div class="flex flex-row gap-4">
-				<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-360q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm280 80q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm280 80q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+				<svg class="hover:fill-orange-800 duration-300" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-360q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm280 80q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm280 80q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
 				<p>{"Bulk Blinking Brilliance: Create Links at Warp Speed!"}</p>
 			</div>
 		</div>
 	</div>
 }
-
-templ DashboardHome(name string) {
-	@base() {
-		@header()
-		@body()
-		@linkBox()
-		@info()
-	}
-}
-
-templ linkTile(url data.Url) {
-	<div class="flex flex-row justify-center">
-		<div class="w-2/5 flex flex-row justify-between px-6 py-3 border-2 border-orange-800 rounded-l-lg items-center">
-			<p>{ url.FullLink }</p>
-			<div class="flex flex-row gap-4 items-center">
-				<a class="hover:text-orange-800 duration-300" href={ templ.URL("/" + url.UniqueID) }>{ url.ShortLink }</a>
-				<div class="border-2 border-orange-800 rounded-lg p-1">
-					<svg xmlns="http://www.w3.org/2000/svg" class="hover:fill-orange-800 duration-300" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-520v-320h320v320H120Zm80-80h160v-160H200v160Zm-80 480v-320h320v320H120Zm80-80h160v-160H200v160Zm320-320v-320h320v320H520Zm80-80h160v-160H600v160Zm160 480v-80h80v80h-80ZM520-360v-80h80v80h-80Zm80 80v-80h80v80h-80Zm-80 80v-80h80v80h-80Zm80 80v-80h80v80h-80Zm80-80v-80h80v80h-80Zm0-160v-80h80v80h-80Zm80 80v-80h80v80h-80Z"/></svg>
-				</div>
-				<svg xmlns="http://www.w3.org/2000/svg" class="hover:fill-orange-800 duration-300" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-280h80v-200h-80v200Zm320 0h80v-400h-80v400Zm-160 0h80v-120h-80v120Zm0-200h80v-80h-80v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
-				<a class="hover:text-orange-800 duration-300" href={ templ.URL("/public/links/" + url.UniqueID) }>{"copy"}</a>
-			</div>
-		</div>
-		<button class="bg-orange-800 text-white font-bold px-12 rounded-r-lg hover:bg-orange-500 duration-300">x</button>
-	</div>
-}
-
-
-templ links(urls []data.Url) {
-	<ul class="flex flex-col gap-3">
-		for _, url := range urls {
-			<li>
-				@linkTile(url)
-			</li>
-		}
-	</ul>
-}
-
-
-templ DashboardHomeLinks(urls []data.Url) {
-	@base() {
-		@header()
-		@body()
-		@linkBox()
-		@links(urls)
-		@info()
-	}
-}
-
-// Link Dashboard Info Session
 
 templ linkDashboardInfo(url data.Url) {
 	<div class="mt-24 mx-24 flex flex-row justify-center gap-24">
@@ -147,6 +111,72 @@ templ linkDashboardInfo(url data.Url) {
 	</div>
 }
 
+templ linkTile(url data.Url) {
+	<div class="flex flex-row justify-center items-center">
+		<div class="w-2/5 flex flex-row justify-between px-6 py-3 border-2 border-orange-800 rounded-l-lg items-center">
+			<p>{ url.FullLink }</p>
+			<div class="flex flex-row gap-4 items-center">
+				<a id="urlShortLink" class="hover:text-orange-800 duration-300" href={ templ.URL("/" + url.UniqueID) }>{ url.ShortLink }</a>
+				<div class="border-2 border-orange-800 rounded-lg p-1">
+					<a href={ templ.URL("/public/links/" + url.UniqueID + "/qr") }><svg xmlns="http://www.w3.org/2000/svg" class="hover:fill-orange-800 duration-300" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-520v-320h320v320H120Zm80-80h160v-160H200v160Zm-80 480v-320h320v320H120Zm80-80h160v-160H200v160Zm320-320v-320h320v320H520Zm80-80h160v-160H600v160Zm160 480v-80h80v80h-80ZM520-360v-80h80v80h-80Zm80 80v-80h80v80h-80Zm-80 80v-80h80v80h-80Zm80 80v-80h80v80h-80Zm80-80v-80h80v80h-80Zm0-160v-80h80v80h-80Zm80 80v-80h80v80h-80Z"/></svg></a>
+				</div>
+				<a class="hover:text-orange-800 duration-300" href={ templ.URL("/public/links/" + url.UniqueID) }>
+					<svg xmlns="http://www.w3.org/2000/svg" class="hover:fill-orange-800 duration-300" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-280h80v-200h-80v200Zm320 0h80v-400h-80v400Zm-160 0h80v-120h-80v120Zm0-200h80v-80h-80v80ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+				</a>
+				<a class="hover:text-orange-800 duration-300" onClick={ copyText("urlShortLink") }>{"copy"}</a>
+			</div>
+		</div>
+		<a href={ templ.URL("/" + url.UniqueID + "/delete") } class="bg-orange-800 text-white font-bold px-12 py-5 rounded-r-lg hover:bg-orange-500 duration-300 text-center">x</a>
+	</div>
+}
+
+templ links(urls []data.Url) {
+	<ul class="flex flex-col gap-3">
+		for _, url := range urls {
+			<li>
+				@linkTile(url)
+			</li>
+		}
+	</ul>
+}
+
+templ linkQRCode(url data.Url) {
+	<div class="mt-20 flex flex-row justify-center text-center">
+		<div>
+			<img class="border-2 border-orange-800 p-4 rounded-lg my-5" src={templ.EscapeString("https://api.qrserver.com/v1/create-qr-code/?data=" + url.FullLink + "&amp;size=300x300")} />
+			<p>{ url.ShortLink }</p>
+		</div>
+	</div>
+}
+
+templ DashboardHome(name string) {
+	@base() {
+		@header()
+		@body()
+		@linkBox()
+		@info()
+	}
+}
+
+templ DashboardQRCode(url data.Url) {
+	@base() {
+		@header()
+		@body()
+		@linkBox()
+		@linkQRCode(url)
+		@info()
+	}
+}
+
+templ DashboardHomeLinks(urls []data.Url) {
+	@base() {
+		@header()
+		@body()
+		@linkBox()
+		@links(urls)
+		@info()
+	}
+}
 
 templ LinkDashboard(url data.Url ) {
 	@base() {

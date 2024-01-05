@@ -18,7 +18,10 @@ func New() http.Handler {
 	router.HandleFunc("/public/links/{url}", handlers.LinkDashboard).Methods("GET")
 
 	router.HandleFunc("/{urlId}", handlers.Redirect).Methods("GET")
+	router.HandleFunc("/{urlId}/delete", handlers.DeletePublicLink).Methods("GET")
 	router.HandleFunc("{urlRoute}", handlers.Redirect).Methods("GET")
+
+	router.HandleFunc("/public/links/{urlId}/qr", handlers.ShowQRCode).Methods("GET")
 
 	return router
 }
